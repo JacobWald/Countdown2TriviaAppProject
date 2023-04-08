@@ -95,3 +95,8 @@ export default function Question(props) {
     </>
   );
 }
+
+//TODO: Add MaterialUI
+//TODO: First Question is getting an answer set from some previously generated question somehow....
+//TODO: Have to comment out Line 14 of trivia.js to initially run code (idk why)
+//TODO: Randomize question placement on the UI. Currently the correct answer is always that last choice.
