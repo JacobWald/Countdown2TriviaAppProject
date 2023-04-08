@@ -11,7 +11,7 @@ export default function Trivia() {
   return (
     <>
       <h1>Triva Game!</h1>
-      {questions.length > 0 && <Question questionList={questions} />}
+      <Question questionList={questions} />
     </>
   );
 }
