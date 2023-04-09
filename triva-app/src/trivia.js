@@ -1,6 +1,6 @@
 import Question from "./question.js";
 import React, { useState, useEffect } from "react";
-import { decode } from "./html-encoder-decoder";
+import { decode } from "html-encoder-decoder";
 
 export default function Trivia() {
   const [questions, setQuestions] = useState([]);
