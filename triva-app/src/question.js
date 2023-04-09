@@ -95,6 +95,3 @@ export default function Question(props) {
     );
   }
 }
-
-//TODO: Add MaterialUI
-//TODO: Randomize question placement on the UI. Currently the correct answer is always that last choice.
