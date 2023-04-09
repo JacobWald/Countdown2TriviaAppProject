@@ -1,9 +1,11 @@
+import Button from "@mui/material/Button";
+
 export default function Answer(props) {
   return (
     <div>
-      <button variant="contained" onClick={props.onButtonClick}>
+      <Button variant="outlined" onClick={props.onButtonClick}>
         {props.index}. {props.value}
-      </button>
+      </Button>
     </div>
   );
 }
