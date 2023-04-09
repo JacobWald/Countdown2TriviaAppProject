@@ -25,26 +25,30 @@ export default function Question(props) {
 
   useEffect(() => {
     if (!(questionNumber >= props.questionList.length)) {
-      setQuestionInfo(
-        isMultipleChoice
-          ? [
-              props.questionList[questionNumber].incorrect_answers[0],
-              props.questionList[questionNumber].incorrect_answers[1],
-              props.questionList[questionNumber].incorrect_answers[2],
-              props.questionList[questionNumber].correct_answer,
-            ]
-          : [
-              props.questionList[questionNumber].incorrect_answers[0],
-              props.questionList[questionNumber].correct_answer,
-            ]
-      );
+      const options = isMultipleChoice
+        ? [
+            props.questionList[questionNumber].incorrect_answers[0],
+            props.questionList[questionNumber].incorrect_answers[1],
+            props.questionList[questionNumber].incorrect_answers[2],
+            props.questionList[questionNumber].correct_answer,
+          ]
+        : [
+            props.questionList[questionNumber].incorrect_answers[0],
+            props.questionList[questionNumber].correct_answer,
+          ];
+
+      // Fisher-Yates shuffle algo (googled)
+      for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+      setQuestionInfo(options);
     }
   }, [questionNumber, isMultipleChoice, props.questionList]);
 
   function handleClick(index) {
     if (
-      questionInfo[index] ===
-      (isMultipleChoice ? questionInfo[3] : questionInfo[1])
+      questionInfo[index] === props.questionList[questionNumber].correct_answer
     ) {
       setCorrectAmount(correctAmount + 1);
     } else {
