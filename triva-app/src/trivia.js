@@ -1,5 +1,6 @@
 import Question from "./question.js";
 import React, { useState, useEffect } from "react";
+import { decode } from "./html-encoder-decoder";
 
 export default function Trivia() {
   const [questions, setQuestions] = useState([]);
@@ -8,10 +9,19 @@ export default function Trivia() {
     generateQuestions(setQuestions);
   }, []);
 
+  const decodedQuestions = questions.map((q) => {
+    return {
+      ...q,
+      question: decode(q.question),
+      incorrect_answers: q.incorrect_answers.map((a) => decode(a)),
+      correct_answer: decode(q.correct_answer),
+    };
+  });
+
   return (
     <>
       <h1>Triva Game!</h1>
-      <Question questionList={questions} />
+      <Question questionList={decodedQuestions} />
     </>
   );
 }
