@@ -1,9 +1,9 @@
 export default function Answer(props) {
   return (
     <div>
-      <button onClick={props.onButtonClick}>
+      <Button variant="contained" onClick={props.onButtonClick}>
         {props.index}. {props.value}
-      </button>
+      </Button>
     </div>
   );
 }
